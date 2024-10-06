@@ -42,12 +42,11 @@ jobs:
         with:
           path: app/vnqa
 
-      - uses: fawazahmed0/action-debug-vscode@main
-      # - name: Publish
-      #   env:
-      #     GH_TOKEN: ${{ secrets.PASS }}
-      #   run: |
-      #     cd app
-      #     rm -rf .git
-      #     mv vnqa/.git .
-      #     npm run build:win
+      - name: Publish
+        env:
+          GH_TOKEN: ${{ secrets.PASS }}
+        run: |
+          cd app
+          rm .git -r -fo
+          mv vnqa/.git .
+          npm run build:win
