@@ -38,10 +38,16 @@ jobs:
       - run: cd data; npm ci
       - run: cd app; npm ci
 
-      - name: Publish
-        env:
-          GH_TOKEN: ${{ secrets.PASS }}
-        run: |
-          cd app
-          git remote set-url origin https://github.com/AICafe1/vnqa-app
-          npm run build:win
+      - uses: actions/checkout@v4
+        with:
+          path: app/vnqa
+
+      - uses: fawazahmed0/action-debug-vscode@main
+      # - name: Publish
+      #   env:
+      #     GH_TOKEN: ${{ secrets.PASS }}
+      #   run: |
+      #     cd app
+      #     rm -rf .git
+      #     mv vnqa/.git .
+      #     npm run build:win
